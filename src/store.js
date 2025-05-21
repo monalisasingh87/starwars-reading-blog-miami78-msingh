@@ -1,32 +1,62 @@
-export const initialStore=()=>{
-  return{
-    message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
-  }
-}
+export const initialStore = () => {
+  return {
+    allPeople: [],
+    allPlanets: [],
+    allVehicles: [],
+    singlePerson: [],
+    singlePlanet: [],
+    singleVehicle: [],
+    favorites: [],
+  };
+};
 
 export default function storeReducer(store, action = {}) {
-  switch(action.type){
-    case 'add_task':
+  switch (action.type) {
+    // case 'add_task':
 
-      const { id,  color } = action.payload
+    //  const { id,  color } = action.payload
 
+    case "fetchedAllPeople":
+      const peopleArray = action.payload;
+      console.log(peopleArray)
       return {
         ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
+        allPeople: peopleArray,
       };
+    case "fetchedAllPlanets":
+      break;
+    case "fetchedAllVehicles":
+      break;
+    case "favedProfile": {
+      const { uid, name } = action.payload;
+      const filteredArray = store.favorites.filter(
+        (favorite) => favorite.name !== name
+      );
+      return {
+        ...store,
+        favorites: [...filteredArray, { uid: uid, name: name }],
+      };
+    }
+    case "removedFavorite": {
+      const { name } = action.payload;
+      const filteredArray = store.favorites.filter(
+        (favorite) => favorite.name !== name
+      );
+      return {
+        ...store,
+        favorites: [...filteredArray],
+      };
+    }
+    // case 'toggleFavorites':
+    //  if(!store.favorites.find(favorite=> favorite.name ===action.payload.name)){
+    //     return{
+    //       ...store,
+    //       favorites: [...store.favorites, action.payload]
+    //     }
+    //   }
+    // }
+
     default:
-      throw Error('Unknown action.');
-  }    
+      throw Error("Unknown action.");
+  }
 }
