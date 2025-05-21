@@ -24,10 +24,22 @@ export default function storeReducer(store, action = {}) {
         allPeople: peopleArray,
       };
     case "fetchedAllPlanets":
+      const planetsArray = action.payload;
+      console.log(planetsArray)
+      return {
+        ...store,
+        allPlanets: planetsArray,
+      };
       break;
     case "fetchedAllVehicles":
+      const vehiclesArray = action.payload;
+      console.log(vehiclesArray)
+      return {
+        ...store,
+        allVehicles: vehiclesArray,
+      };
       break;
-    case "favedProfile": {
+   /* case "favedProfile": {
       const { uid, name } = action.payload;
       const filteredArray = store.favorites.filter(
         (favorite) => favorite.name !== name
@@ -46,7 +58,7 @@ export default function storeReducer(store, action = {}) {
         ...store,
         favorites: [...filteredArray],
       };
-    }
+    }*/
     // case 'toggleFavorites':
     //  if(!store.favorites.find(favorite=> favorite.name ===action.payload.name)){
     //     return{

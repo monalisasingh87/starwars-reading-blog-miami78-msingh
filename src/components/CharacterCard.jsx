@@ -1,17 +1,15 @@
-import { Link } from "react-router-dom";
-import useGlobalReducer from "../hooks/useGlobalReducer";
+import { Link } from "react-router-dom"
+import { useFavorites } from '../hooks/FavoritesContext'
 
 const style = {
   width: "18rem",
 };
+export const CharacterCard = ({ uid, name}) => {
+ const { toggleFavorite, favorites } = useFavorites();
+ const isFavorited = favorites.some(
+  (item) => item.uid === uid && item.type === 'character'
+ )
 
-export const CharacterCard = ({ uid, name }) => {
- const {store,dispatch }= useGlobalReducer();
- //const { toggleFavorite, favorites } = useFavorites();
-// const isFavorited = favorites.some(
- // (item) => item.uid === uid && item.type === "character"
- // );
-  
   return (
     <>
       <div className="card" style={style}>
@@ -29,10 +27,10 @@ export const CharacterCard = ({ uid, name }) => {
             <button
               className="heart"
               onClick={() => toggleFavorite({ uid, name, type: "character" })}
-             // style={{
-              //  backgroundColor: isFavorited ? "yellow" : "white",
-              //  color: isFavorited ? "black" : "inherit",
-              //}}
+             style={{
+                backgroundColor: isFavorited ? "yellow" : "white",
+                color: isFavorited ? "black" : "inherit",
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

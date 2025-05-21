@@ -1,7 +1,7 @@
 export const PeopleProfilePage = () => {
     return (
         <>
-            PeopleProfile Page
+            People Profile Page
         </>
     )
 }
