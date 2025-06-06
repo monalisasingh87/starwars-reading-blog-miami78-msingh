@@ -7,7 +7,7 @@ const style = {
 export const CharacterCard = ({ uid, name}) => {
  const { toggleFavorite, favorites } = useFavorites();
  const isFavorited = favorites.some(
-  (item) => item.uid === uid && item.type === 'character'
+  (item) => item.uid === uid && item.type === 'people'
  )
 
   return (
@@ -26,7 +26,7 @@ export const CharacterCard = ({ uid, name}) => {
             </Link>
             <button
               className="heart"
-              onClick={() => toggleFavorite({ uid, name, type: "character" })}
+              onClick={() => toggleFavorite({ uid, name, type: "people" })}
              style={{
                 backgroundColor: isFavorited ? "yellow" : "white",
                 color: isFavorited ? "black" : "inherit",

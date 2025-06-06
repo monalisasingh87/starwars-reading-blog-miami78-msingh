@@ -19,7 +19,7 @@ return (
 						</button>
 						<ul className="dropdown-menu">
 							{favorites.map((item, index) => (<li key={index}>
-								<Link to={`/profile-page/people/${item.uid}`}>{item.name}</Link>
+								<Link to={`/profile-page/${item.type}/${item.uid}`}>{item.name}</Link>
 
 								<button onClick={()=> {
 									// e.preventDefault(); 
