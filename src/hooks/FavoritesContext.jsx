@@ -10,6 +10,7 @@ const [favorites, setFavorites] = useState([]);
 
 const toggleFavorite = (item) =>{
     setFavorites((prevState) => {
+        console.log("here is my item", item)
         const exists = prevState.find(fav => fav.uid === item.uid && fav.type === item.type);
       return exists ?
             prevState.filter(fav => !(fav.uid === item.uid && fav.type === item.type)) :

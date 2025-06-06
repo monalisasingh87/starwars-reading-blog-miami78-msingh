@@ -9,7 +9,7 @@ return (
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">Star War Blog</span>
+					<span className="navbar-brand mb-0 h1">Star Wars Reading Blog</span>
 				</Link>
 				<div className="ml-auto">
 
@@ -18,7 +18,8 @@ return (
 							Favorites {favorites.length}
 						</button>
 						<ul className="dropdown-menu">
-							{favorites.map((item, index) => (<li key={index}>{item.name}
+							{favorites.map((item, index) => (<li key={index}>
+								<Link to={`/profile-page/people/${item.uid}`}>{item.name}</Link>
 
 								<button onClick={()=> {
 									// e.preventDefault(); 

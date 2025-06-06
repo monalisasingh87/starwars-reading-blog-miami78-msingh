@@ -31,6 +31,19 @@ export const CharacterCard = ({ uid, name}) => {
                 backgroundColor: isFavorited ? "yellow" : "white",
                 color: isFavorited ? "black" : "inherit",
               }}
+              onMouseEnter={e => {
+                if (!isFavorited) {
+                  e.target.style.backgroundColor = 'white';
+                  e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)'
+                  // e.target.style.color = 'black';
+                }
+              }}
+              onMouseLeave={e => {
+                if (!isFavorited) {
+                  e.target.style.backgroundColor = 'white';
+                  // e.target.style.color = 'inherit';
+                }
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
